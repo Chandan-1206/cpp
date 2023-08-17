@@ -38,7 +38,7 @@ void print(node* &rear){
         cout<<temp->data<<"\t";
         temp=temp->next;
     }
-    cout<<endl;
+    cout<<temp->data<<endl;
 }
 
 
