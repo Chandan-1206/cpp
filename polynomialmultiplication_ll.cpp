@@ -113,6 +113,7 @@ int main ()
         y = 2 - i;
         insert (h1, x, y);
     }
+    cout<<"first polynomial : \n";
     print (h1);
     int a, b;
     for (int i = 0; i < 3; i++)
@@ -121,9 +122,12 @@ int main ()
         b = 2 - i;
         insert (h2, a, b);
     }
+    cout<<"\nsecond polynomial : \n";
     print (h2);
     multiply (h1, h2, h3);
+    cout<<"\npolynomial after multiplication : \n";
     print (h3);
+    cout<<"\npolynomial after multiplication and adding coefficients with same powers : \n";
     duplicate(h3);
     print(h3);
 
