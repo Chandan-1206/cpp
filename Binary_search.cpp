@@ -4,12 +4,12 @@
 using namespace std;
 
 // Binary search for array
-int binary_search(int arr[],int n,int f){
+void binary_search(int arr[],int n,int f){
     int s=0,e=n;
     while(s<=e){
         int mid=(e+s)/2;
         if(f==arr[mid]){
-            return mid;
+            cout<<f<<" is at index : "<<mid<<endl;
         }
         else if(f<arr[mid]){
             e=mid-1;
@@ -18,23 +18,23 @@ int binary_search(int arr[],int n,int f){
             s=mid+1;
         }
     }
-    return -1;
+    cout<<"Not found!!!\n";
 }
 
 // Binary search for array with reccursion
-int binary_search_rec(int arr[],int s,int e,int f){
+void binary_search_rec(int arr[],int s,int e,int f){
     int mid=(s+e)/2;
     if(s>e){
-        return -1;
+        cout<<"Not found!!!\n";
     }
     else if(f==arr[mid]){
-        return mid;
+        cout<<f<<" is at index : "<<mid<<endl;
     }
     else if(f<arr[mid]){
-        return binary_search_rec(arr,s,mid-1,f);
+        binary_search_rec(arr,s,mid-1,f);
     }
     else{
-        return binary_search_rec(arr,mid+1,e,f);
+        binary_search_rec(arr,mid+1,e,f);
     }
 }
 
@@ -55,8 +55,8 @@ int main()
     
     cout<<"enter the element to search : ";
     cin>>find;
-    // cout<<binary_search(arr,n,find)<<endl;
-    cout<<binary_search_rec(arr,0,n,find)<<endl;
+    // binary_search(arr,n,find);
+    binary_search_rec(arr,0,n,find);
     
     
     return 0;
