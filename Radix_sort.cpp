@@ -5,11 +5,11 @@ using namespace std;
 
 void count_sort(int a[],int n, int place)
 {
-    int k=a[0];
+    int k=(a[0]/place)%10;
     for(int i=0; i<n; i++)
     {
-        if (k<a[i])
-            k=a[i];
+        if (k<(a[i]/place)%10)
+            k=(a[i]/place)%10;
     }
     int count_arr[k+1]= {0};
     for(int i=0; i<n; i++)
