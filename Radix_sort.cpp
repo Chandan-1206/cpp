@@ -1,46 +1,48 @@
-//Radix sort
+//RADIX SORT
 
 #include <iostream>
 using namespace std;
 
-
-void count_sort(int a[],int n){
+void count_sort(int a[],int n, int place)
+{
     int k=a[0];
-    for(int i=0;i<n;i++){
-        k=max(k,a[i]);
+    for(int i=0; i<n; i++)
+    {
+        if (k<a[i])
+            k=a[i];
     }
-    
-    int count[k+1]={0};
-    
-    for(int i=0;i<n;i++){
-        count[a[i]]++;
+    int count_arr[k+1]= {0};
+    for(int i=0; i<n; i++)
+    {
+        count_arr[(a[i]/place)%10]++;
     }
-    
-    
-    for(int i=1;i<=k;i++){
-        count[i]+=count[i-1];
+    for(int i=1; i<=k; i++)
+    {
+        count_arr[i]+=count_arr[i-1];
     }
-    
-    int final[n];
-    
-    for(int i=n-1;i>=0;i--){
-        final[--count[a[i]]]=a[i];
+    int res[n];
+    for(int i=n-1; i>=0; i--)
+    {
+        res[--count_arr[(a[i]/place)%10]]=a[i];
     }
-    
-    for(int i=0;i<n;i++){
-        a[i]=final[i];
+    for(int i=0; i<n; i++)
+    {
+        a[i]=res[i];
     }
 }
 
-void radix_sort(int a[], int n) {
+void radix_sort(int a[], int n)
+{
     int k = a[0];
-    for (int i = 1; i < n; i++) {
-            k=max(k,a[i]);
+    for (int i = 1; i < n; i++)
+    {
+        if (k<a[i])
+            k=a[i];
     }
-
     int t = 1;
-    while (k/t>0) {
-        count_sort(a, n);
+    while (k/t>0)
+    {
+        count_sort(a, n, t);
         t *= 10;
     }
 }
